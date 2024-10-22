@@ -1,0 +1,68 @@
+Objects
+
+Many programming languages allow programmers to create "objects" in their code;
+
+-In real life, an object is a "thing" or noun that has many properties associated with it.
+
+-For example: student,courses,customer policy
+
+Once you figure out what object you want to model, you have to figure out what properties you need to represent it.
+
+-For example, an Employee might have the following properties:
+*employeeId
+*name
+*jobTitle
+*payRate
+
+//////////////////////////////////////////////
+
+JavaScript Objects
+
+JavaScript allows you to declare objects with values for each property
+
+-Properties are written as name and value pairs that are separated by a colon;
+
+Example
+
+let emp = {
+    employeeId: "1",
+    name: "Ezra",
+    jobTitle: "Theater Teacher",
+    payRate : "38.46"
+}
+
+/////////////////////////////////////////////////////
+
+Accessing Objects Properties
+
+You can access object properties in two ways 
+
+objectName.propertyName 
+
+or
+
+objectName["propertyName"]
+
+Example
+
+let emp1 = {
+        employeeId: "1",
+    name: "Ezra",
+    jobTitle: "Theater Teacher",
+    payRate : "38.46"
+}
+
+let emp2 = {
+        employeeId: "2",
+    name: "Elisha",
+    jobTitle: "Game Developer",
+    payRate : "43.27"
+}
+
+console.log("Employee1: " + emp1.name) //Dot notation
+console.log("Employee2: " + emp2.name) //Dot notation
+
+or
+
+console.log("Employee1: " + emp1["name"]); //bracket notation
+console.log("Employee2: " + emp2["name"]) 

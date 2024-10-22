@@ -1,0 +1,9 @@
+Loops
+
+Loops can be used ti execute a block of code over and over until conditions are met.
+
+There are several types of loops, including:
+1.while loops
+2.do/while loops
+3.for loops
+4.for-in loops
