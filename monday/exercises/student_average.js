@@ -8,16 +8,28 @@ let students = [
 ];
 
 // let all = students.length
-let totalGrades = 0;
+
 for (let i = 0; i < students.length; i++) {
   let scores = students[i].scores;
+  let totalGrades = 0;
 
   for (let x = 0; x < scores.length; x++) {
-    // console.log(students[i].name, students[i].scores[x])
     totalGrades = totalGrades + scores[x];
   }
-  let averages = totalGrades / scores.length;
-  console.log(`${students[i].name} ${averages.toFixed(2)}`);
+  let average = totalGrades / scores.length;
+  console.log(`${students[i].name} ${average.toFixed(2)}`);
 }
 
-console.log(totalGrades);
+// console.log(totalGrades);
+
+console.log("--------------------")
+
+for(let i = 0; i < students.length; i++){
+    let totalGrade = 0;
+
+    for(let x = 0; x < students[i].scores.length; x++){
+        totalGrade = totalGrade + students[i].scores[x];
+    }
+    let getTheAverage = totalGrade / students[i].scores.length
+    console.log(getTheAverage)
+}

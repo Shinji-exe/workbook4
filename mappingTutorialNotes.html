@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapping Data to HTML</title>
+</head>
+<body>
+
+    <h1>List of Fruits</h1>
+    <ul id="fruit-list"></ul> <!-- This is where we will display the data -->
+
+    <script>
+        // Data to be mapped
+        const fruits = ["Apple", "Banana", "Cherry", "Date", "Elderberry"];
+
+        // Get the element where we want to inject the data
+        const fruitList = document.getElementById('fruit-list');
+
+        // Function to map data to HTML
+        function displayFruits(fruits) {
+            fruits.forEach(fruit => {
+                // Create a new list item (li) for each fruit
+                const li = document.createElement('li');
+                li.textContent = fruit; // Set the text content of the li to the fruit name
+                fruitList.appendChild(li); // Append the li to the ul
+            });
+        }
+
+        // Call the function to display the data
+        displayFruits(fruits);
+    </script>
+
+</body>
+</html>

@@ -8,15 +8,71 @@ let yourScores = [82, 98, 94, 88, 92, 100, 100];
 //for-loops
 //operators to the summing
 
-       //for of keeps the count so no i++
-for (const item of myScores) {
-    console.log(item)
+// function with the for off loop
+function getAverageAmount(myScores){
+    let sumOfAllScores = 0;
+    //for of keeps the count so no i++
+for (const score of myScores) {
+//  console.log(score)
+ sumOfAllScores = sumOfAllScores + score;
+//  console.log(sumOfAllScores)
+
+ let average = sumOfAllScores / myScores.length
+//  console.log(average)
+ // sumOfAllScores += score
+
+ return average
 }
+
+}
+
+let myAverageScore = getAverageAmount(myScores)
+console.log(myAverageScore.toFixed(2))
+
+console.log("-----------------------")
+
+function addCount(arrayParam){
+let addCountLength = 0;
+for(let i = 0; i < arrayParam.length; i++){
+  addCountLength = addCountLength + arrayParam[i]
+}
+return addCountLength
+}
+
+let counter = addCount(myScores);
+console.log("Count: " + counter)
+
+console.log("-----------------------")
+
+let count;
+
+for(let i = 0; i < myScores.length; i++){
+  count = myScores.length;
+}
+
+console.log(count)
+
+//OR
+
+function getTheCountLength(array){
+let count = null;
+for(let i = 0; i < array.length; i++){
+  count = array.length;
+}
+return count
+}
+
+let lengthTotal = getTheCountLength(myScores);
+console.log(lengthTotal)
+
+console.log("-----------------------")
 
 for(let i = 0; i < myScores.length; i++){
     const item = myScores[i]
     console.log(item)
 }
+
+console.log("-----------------------")
 
 function getAverage(scores) {
     let sum = 0;

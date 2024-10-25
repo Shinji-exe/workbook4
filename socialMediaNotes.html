@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Feed</title>
+    <style>
+        /* Basic styling for the feed */
+        .feed {
+            max-width: 600px;
+            margin: auto;
+            font-family: Arial, sans-serif;
+        }
+        .post {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        .post-header {
+            display: flex;
+            align-items: center;
+        }
+        .profile-pic {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+        }
+        .post-body {
+            margin-top: 10px;
+        }
+        .post-content {
+            margin: 10px 0;
+        }
+        .post-footer {
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="feed" id="social-feed"></div>
+    <button onclick="sortingHat()"></button>
+
+    <script>
+        // Data representing social media posts
+        const posts = [
+            {
+                userId: 1,
+                userName: "Alice Johnson",
+                profilePic: "https://randomuser.me/api/portraits/women/1.jpg",
+                postContent: "Had an amazing time hiking today! #nature",
+                postImage: "https://source.unsplash.com/600x400/?nature",
+                likes: 120,
+                comments: 15,
+                timestamp: "2 hours ago"
+            },
+            {
+                userId: 2,
+                userName: "John Doe",
+                profilePic: "https://randomuser.me/api/portraits/men/2.jpg",
+                postContent: "My new project is live! Check it out at johnsportfolio.com",
+                postImage: "",
+                likes: 240,
+                comments: 30,
+                timestamp: "5 hours ago"
+            },
+            {
+                userId: 3,
+                userName: "Emma Stone",
+                profilePic: "https://randomuser.me/api/portraits/women/3.jpg",
+                postContent: "Just finished reading a great book. Highly recommend 'Atomic Habits'.",
+                postImage: "https://source.unsplash.com/600x400/?book",
+                likes: 180,
+                comments: 25,
+                timestamp: "1 day ago"
+            }
+        ];
+
+        // Function to render the social media posts
+        function renderPosts(posts) {
+            const feed = document.getElementById('social-feed');
+
+            posts.forEach(post => {
+                // Create a post container
+                const postElement = document.createElement('div');
+                postElement.classList.add('post');
+
+                // Post header with profile picture and user name
+                const postHeader = `
+                    <div class="post-header">
+                        <img class="profile-pic" src="${post.profilePic}" alt="${post.userName}">
+                        <div>
+                            <strong>${post.userName}</strong><br>
+                            <span>${post.timestamp}</span>
+                        </div>
+                    </div>
+                `;
+
+                // Post body with text content and optional image
+                const postBody = `
+                    <div class="post-body">
+                        <p class="post-content">${post.postContent}</p>
+                        ${post.postImage ? `<img src="${post.postImage}" alt="Post image" style="width:100%; border-radius: 8px;">` : ''}
+                    </div>
+                `;
+
+                // Post footer with likes and comments
+                const postFooter = `
+                    <div class="post-footer">
+                        <span>${post.likes} likes</span> | <span>${post.comments} comments</span>
+                    </div>
+                `;
+
+                // Combine all parts of the post
+                postElement.innerHTML = postHeader + postBody + postFooter;
+
+                // Append the post to the feed
+                feed.appendChild(postElement);
+            });
+        }
+
+        // Call the function to render the posts
+        renderPosts(posts);
+
+        function sortingHat(array){
+// for(let i = 0; i < array.length; i++){
+//     array[i].userId
+// }
+
+        }
+    </script>
+
+</body>
+</html>

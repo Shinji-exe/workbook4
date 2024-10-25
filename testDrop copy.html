@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <form action="">
+        <div class="mb-3">
+          <select name="form-select" id="selectGames">
+            <!-- <option value=""></option>
+                    <option value="1"></option>
+                    <option value="2"></option>
+                    <option value="3"></option>
+                    <option value="4"></option>
+                    <option value="5"></option> -->
+            <option value="">select...</option>
+            <!-- <option value="3" selected>Game</option> -->
+          </select>
+        </div>
+        <button type="button" onclick="showGame()" class="btn btn-secondary">Show Game</button>
+      </form>
+
+      <div id="detailDiv"></div>
+    </main>
+
+    <script>
+      "use strict";
+      const selectGame = document.getElementById("selectGames");
+      const detailDiv = document.getElementById("detailDiv");
+
+      // let games = ["Call of Duty", "NBA2K", "MaddenNFL"];
+      // let gameAbbrv = ["1", "2", "3"];
+
+      const videoGames = [
+        {
+          id: 1,
+          title: "The Legend of Zelda: Breath of the Wild",
+          platform: "Nintendo Switch",
+          genre: "Action-Adventure",
+          releaseYear: 2017,
+        },
+        { id: 2, title: "The Witcher 3: Wild Hunt", platform: "PC", genre: "RPG", releaseYear: 2015 },
+        { id: 3, title: "God of War", platform: "PlayStation 4", genre: "Action-Adventure", releaseYear: 2018, img: "" },
+        {
+          id: 4,
+          title: "Red Dead Redemption 2",
+          platform: "PlayStation 4",
+          genre: "Action-Adventure",
+          releaseYear: 2018,
+        },
+        { id: 5, title: "Super Mario Odyssey", platform: "Nintendo Switch", genre: "Platformer", releaseYear: 2017 },
+        { id: 6, title: "Hades", platform: "PC", genre: "Roguelike", releaseYear: 2020 },
+        { id: 7, title: "Minecraft", platform: "PC", genre: "Sandbox", releaseYear: 2011 },
+        { id: 8, title: "Grand Theft Auto V", platform: "PC", genre: "Action-Adventure", releaseYear: 2013 },
+        { id: 9, title: "Fortnite", platform: "PC", genre: "Battle Royale", releaseYear: 2017 },
+        { id: 10, title: "Overwatch", platform: "PC", genre: "FPS", releaseYear: 2016 },
+        { id: 11, title: "Dark Souls III", platform: "PC", genre: "Action RPG", releaseYear: 2016 },
+        { id: 12, title: "Bloodborne", platform: "PlayStation 4", genre: "Action RPG", releaseYear: 2015 },
+        { id: 13, title: "Cyberpunk 2077", platform: "PC", genre: "RPG", releaseYear: 2020 },
+        { id: 14, title: "Halo Infinite", platform: "Xbox Series X", genre: "FPS", releaseYear: 2021 },
+        { id: 15, title: "Apex Legends", platform: "PC", genre: "Battle Royale", releaseYear: 2019 },
+        {
+          id: 16,
+          title: "Animal Crossing: New Horizons",
+          platform: "Nintendo Switch",
+          genre: "Simulation",
+          releaseYear: 2020,
+        },
+        { id: 17, title: "Fall Guys", platform: "PC", genre: "Party", releaseYear: 2020 },
+        { id: 18, title: "Among Us", platform: "PC", genre: "Party", releaseYear: 2018 },
+        { id: 19, title: "Call of Duty: Warzone", platform: "PC", genre: "Battle Royale", releaseYear: 2020 },
+        { id: 20, title: "Persona 5", platform: "PlayStation 4", genre: "JRPG", releaseYear: 2016 },
+        { id: 21, title: "Monster Hunter: World", platform: "PC", genre: "Action RPG", releaseYear: 2018 },
+        { id: 22, title: "Sekiro: Shadows Die Twice", platform: "PC", genre: "Action RPG", releaseYear: 2019 },
+        { id: 23, title: "Final Fantasy XV", platform: "PC", genre: "JRPG", releaseYear: 2016 },
+        { id: 24, title: "Destiny 2", platform: "PC", genre: "FPS", releaseYear: 2017 },
+        { id: 25, title: "Genshin Impact", platform: "PC", genre: "Action RPG", releaseYear: 2020 },
+        { id: 26, title: "Resident Evil Village", platform: "PC", genre: "Survival Horror", releaseYear: 2021 },
+        {
+          id: 27,
+          title: "Spider-Man: Miles Morales",
+          platform: "PlayStation 5",
+          genre: "Action-Adventure",
+          releaseYear: 2020,
+        },
+        { id: 28, title: "Ghost of Tsushima", platform: "PlayStation 4", genre: "Action-Adventure", releaseYear: 2020 },
+        { id: 29, title: "Elden Ring", platform: "PC", genre: "Action RPG", releaseYear: 2022 },
+        { id: 30, title: "Death Stranding", platform: "PC", genre: "Action", releaseYear: 2019 },
+        { id: 31, title: "Control", platform: "PC", genre: "Action-Adventure", releaseYear: 2019 },
+        { id: 32, title: "Diablo III", platform: "PC", genre: "Action RPG", releaseYear: 2012 },
+        { id: 33, title: "League of Legends", platform: "PC", genre: "MOBA", releaseYear: 2009 },
+        { id: 34, title: "Dota 2", platform: "PC", genre: "MOBA", releaseYear: 2013 },
+        { id: 35, title: "Star Wars Jedi: Fallen Order", platform: "PC", genre: "Action-Adventure", releaseYear: 2019 },
+        { id: 36, title: "Valorant", platform: "PC", genre: "FPS", releaseYear: 2020 },
+        { id: 37, title: "Horizon Zero Dawn", platform: "PC", genre: "Action RPG", releaseYear: 2017 },
+        { id: 38, title: "Far Cry 6", platform: "PC", genre: "FPS", releaseYear: 2021 },
+        { id: 39, title: "Forza Horizon 5", platform: "PC", genre: "Racing", releaseYear: 2021 },
+        { id: 40, title: "FIFA 23", platform: "PC", genre: "Sports", releaseYear: 2022 },
+        { id: 41, title: "NBA 2K23", platform: "PC", genre: "Sports", releaseYear: 2022 },
+        { id: 42, title: "Assassin's Creed Valhalla", platform: "PC", genre: "Action-Adventure", releaseYear: 2020 },
+        {
+          id: 43,
+          title: "Ratchet & Clank: Rift Apart",
+          platform: "PlayStation 5",
+          genre: "Platformer",
+          releaseYear: 2021,
+        },
+        { id: 44, title: "Cuphead", platform: "PC", genre: "Platformer", releaseYear: 2017 },
+        { id: 45, title: "Hollow Knight", platform: "PC", genre: "Metroidvania", releaseYear: 2017 },
+        { id: 46, title: "Celeste", platform: "PC", genre: "Platformer", releaseYear: 2018 },
+        { id: 47, title: "Ori and the Will of the Wisps", platform: "PC", genre: "Metroidvania", releaseYear: 2020 },
+        { id: 48, title: "Tunic", platform: "PC", genre: "Action-Adventure", releaseYear: 2022 },
+        { id: 49, title: "Sifu", platform: "PC", genre: "Beat 'em up", releaseYear: 2022 },
+        { id: 50, title: "It Takes Two", platform: "PC", genre: "Co-op", releaseYear: 2021 },
+      ];
+
+      function loadStates() {
+        return videoGames;
+      }
+
+      function loadGameDropDown() {
+        for (let i = 0; i < videoGames.length; i++) {
+          // let options = document.createElement("option");
+          // options.innerText = videoGames[i].title;
+          // options.value = videoGames[i].id;
+          let options = new Option(videoGames[i].title, videoGames[i].id); //This line takes text and value. Basically shorthand version of lines 89 - 91
+          selectGame.appendChild(options);
+        }
+      }
+
+      loadStates();
+      loadGameDropDown();
+
+      function showGame() {
+        let id = Number(selectGame.value);
+        console.log(id);
+
+        let selectedGame;
+        for (let i = 0; i < videoGames.length; i++) {
+          if (videoGames[i].id === id) {
+            selectedGame = videoGames[i];
+            break;
+          }
+        }
+        console.log(selectedGame);
+        let gameId = selectGame.value;
+        console.log(gameId);
+
+        detailDiv.innerText = `${selectedGame.title} `
+      }
+
+      // showGame()
+
+      // selectGame.value = 28
+
+      // for(let i = 0; i < videoGames.length; i++){
+      //     // let options = document.createElement("option");
+      //     // options.innerText = videoGames[i].title;
+      //     // options.value = videoGames[i].id;
+      //     let options = new Option(videoGames[i].title, videoGames[i].id) //This line takes text and value. Basically shorthand version of lines 89 - 91
+      //     selectGame.appendChild(options)
+      // }
+    </script>
+  </body>
+</html>

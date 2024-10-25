@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <select name="" id="footballSelector"></select>
+      <button class="" id="footballSelectorBtn" onclick="getTeamDetail()"></button>
+      <div id="displayFootballInfo">
+
+      </div>
+    </main>
+
+    <script>
+       "use strict"
+
+      const footballSelector = document.getElementById("footballSelector");
+      const displayFootballInfo = document.getElementById("displayFootballInfo")
+
+      let teams = [
+        { code: "DAL", name: "Dallas Cowboys", plays: "Arlington, TX" },
+        { code: "DEN", name: "Denver Broncos", plays: "Denver, CO" },
+        { code: "HOU", name: "Houston Texans", plays: "Houston, TX" },
+        { code: "KAN", name: "Kansas City Chiefs", plays: "Kansas City, MO" },
+      ];
+
+      function teamFunction() {
+        for (let i = 0; i < teams.length; i++) {
+          let optionsForTeams = document.createElement("option");
+          optionsForTeams.value = teams[i].code;
+          optionsForTeams.innerText = teams[i].name;
+          footballSelector.appendChild(optionsForTeams); //footballSelector is the parent, optionsForTeams is the child
+        }
+      }
+
+      teamFunction();
+
+      function getTeamDetail() {
+        let idValue = footballSelector.value
+        let selectedTeamDisplay; //
+        for(let i = 0; i < teams.length; i++){
+            if(teams[i].code === idValue){
+                selectedTeamDisplay = teams[i];
+            }
+        }
+displayFootballInfo.innerText = `${selectedTeamDisplay.name} plays in ${selectedTeamDisplay.plays}`
+      }
+    </script>
+  </body>
+</html>
