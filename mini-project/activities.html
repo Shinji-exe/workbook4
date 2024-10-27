@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script defer src="./script.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <header class="d-flex justify-content-between border py-2 px-2">
+
+        <a href="index.html">
+            <img src="./images/logoipsum-239.svg" alt="">
+        </a>
+        
+        <nav class="navbar">
+            <ul class="nav nav">
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Home</a>
+                </li>
+        
+                <li class="nav-item">
+                <a class="nav-link" href="#">About Us</a>
+            </li>
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+        
+               </ul>
+        </nav>
+    </header>
+
+    <main class="container-fluid">
+
+        <div class="mt-3">
+            <select name="" id="selectActivity" onchange="showActivityDetails()">
+                <option value="">Select....</option>
+                </select>
+                
+                <select name="" id="selectMainActivity" onchange="descriptionOfActivity()">
+                    <option value="">Select....</option>
+                </select>
+        </div>
+
+
+<div id="purchaseDisplay" class="border mt-3" style="">
+
+    <div class="px-2 d-flex justify-content-center border container" id="showPackage" style="display: none;">
+
+    </div>
+
+    <form action="" id="show/hide" class="my-2 p-2 border rounded container" style="display:none">
+        
+    <!-- <input type="number" id="amountOfTickets" min="1" max="10"> -->
+    <!-- <button id="minus" onclick="">Minus</button>
+    <button id="add" onclick="">Add</button> -->
+    <!-- <input readonly type="number" name="" id="totalInput"> -->
+    <!-- <input type="email" name="" id="" placeholder="Email Address">
+    <input type="tel" name="" id="" placeholder="Credit Card" maxlength="16">
+    <input type="tel" name="" id="" placeholder="Exp Date">
+    <input type="tel" name="" id="" maxlength="3" placeholder="CVV"> -->
+    <!-- <button class="btn btn-primary rounded-5" onclick="getCost(event)">Get Cost</button> -->
+    <!-- <input type="number" min="1" max="10">
+    <input type="number" min="1" max="10"> -->
+
+    <div class="row g-3 " >
+        <div class="col-6">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstname">
+          </div>
+          <div class="col-6">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastName">
+          </div>
+        <div class="col-md-6">
+          <label for="amountOfTickets" class="form-label">Amount of Tickets</label>
+          <input type="number" class="form-control" id="amountOfTickets" min="1" max="10">
+        </div>
+        <div class="col-md-6">
+          <label for="inputEmail" class="form-label">Email</label>
+          <!-- <input type="email" class="form-control" id="inputPassword4"> -->
+          <input type="email" class="form-control" name="" id="" placeholder="Email Address">
+        </div>
+        <div class="col-12">
+          <label for="inputCreditCardNumber" class="form-label">Credit Card Number</label>
+          <input type="tel" class="form-control" name="" id="inputCreditCardNumber" placeholder="Credit Card" maxlength="16">
+        </div>
+        <div class="col-12">
+          <label for="inputAddress" class="form-label">Address</label>
+          <input type="text" class="form-control" id="inputAddress" placeholder="Apartment, studio, or floor">
+        </div>
+        <div class="col-4">
+            <label for="inputCity" class="form-label">City</label>
+            <input type="text" class="form-control" id="inputCity">
+          </div>
+        <div class="col-4">
+            <label for="inputState" class="form-label">State</label>
+            <input type="text" class="form-control" id="inputState">
+          </div>
+        <div class="col-4">
+            <label for="inputZip" class="form-label">Zip</label>
+            <input type="text" class="form-control" id="inputZip">
+          </div>
+        <div class="col-md-4">
+          <label for="inputCard" class="form-label">Card</label>
+          <select id="inputCard" class="form-select">
+            <option selected>Choose...</option>
+            <option class="" value="Visa">Visa</option>
+            <option class="" value="MasterCard">MasterCard</option>
+            <option class="" value="AMEX">American Express</option>
+            <option class="" value="Discover">Discover</option>
+          </select>
+        </div>
+        <div class="col-md-12">
+          <label for="totalInput" class="form-label">Total</label>
+          <input readonly type="number" class="form-control" name="" id="totalInput">
+          <button class="btn btn-primary rounded-5 mt-3" onclick="getCost(event)">Get Cost</button>
+        </div>
+        <!-- <div class="col-12">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+              Check me out
+            </label>
+          </div>
+        </div> -->
+        <div class="col-12 border">
+            <button class="btn btn-primary rounded-5 " onclick="finalizePurchase(event)">
+                Purchase
+            </button>
+        </div>
+    </div>
+
+   
+<!-- 
+    <div class="my-3 ms-3">
+        <button class="btn btn-primary rounded-5" onclick="finalizePurchase()">
+            Purchase
+        </button>
+    </div> -->
+
+  
+
+    </form>
+
+    <!-- <form class="row g-3" >
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label">Email</label>
+          <input type="email" class="form-control" id="inputEmail4">
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Password</label>
+          <input type="password" class="form-control" id="inputPassword4">
+        </div>
+        <div class="col-12">
+          <label for="inputAddress" class="form-label">Address</label>
+          <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+        </div>
+        <div class="col-12">
+          <label for="inputAddress2" class="form-label">Address 2</label>
+          <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+        </div>
+        <div class="col-md-6">
+          <label for="inputCity" class="form-label">City</label>
+          <input type="text" class="form-control" id="inputCity">
+        </div>
+        <div class="col-md-4">
+          <label for="inputState" class="form-label">State</label>
+          <select id="inputState" class="form-select">
+            <option selected>Choose...</option>
+            <option>...</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <label for="inputZip" class="form-label">Zip</label>
+          <input type="text" class="form-control" id="inputZip">
+        </div>
+        <div class="col-12">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+              Check me out
+            </label>
+          </div>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Sign in</button>
+        </div>
+      </form> -->
+
+    <div id="confirmedPurchaseDisplay" style="display: none;">
+
+    </div>
+
+</div>
+
+<input type="checkbox" name="" id="toggleDisplay" onclick="showPurchaseTickets()">
+<label id="toggleDisplayLabel" for="toggleDisplay">Hide</label>
+
+
+    </main>
+
+    <footer>
+
+    </footer>
+</body>
+</html>

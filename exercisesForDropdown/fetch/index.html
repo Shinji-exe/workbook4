@@ -7,8 +7,8 @@
   </head>
   <body>
     <main>
-      <select name="" id="footballSelector"></select>
-      <button class="" id="footballSelectorBtn" onclick="getTeamDetail()"></button>
+      <select name="" id="footballSelector" onchange="getTeamDetail()"></select>
+      <!-- <button class="" id="footballSelectorBtn" onclick="getTeamDetail()"></button> -->
       <div id="displayFootballInfo">
 
       </div>
@@ -17,36 +17,49 @@
     <script>
        "use strict"
 
-      const footballSelector = document.getElementById("footballSelector");
-      const displayFootballInfo = document.getElementById("displayFootballInfo")
+      const footballSelector = document.getElementById("footballSelector"); //Calling the select
+      const displayFootballInfo = document.getElementById("displayFootballInfo") //Calling the empty div where our data will display
 
+      //This is your data. An array of objects. An array holds multiple things, an object holds one.
       let teams = [
-        { code: "DAL", name: "Dallas Cowboys", plays: "Arlington, TX" },
+        { code: "DAL", name: "Dallas Cowboys", plays: "Arlington, TX", img:"../images/689021.jpg"},
         { code: "DEN", name: "Denver Broncos", plays: "Denver, CO" },
         { code: "HOU", name: "Houston Texans", plays: "Houston, TX" },
         { code: "KAN", name: "Kansas City Chiefs", plays: "Kansas City, MO" },
       ];
 
+
+      //This function inside the function scope are for loop and created element
       function teamFunction() {
-        for (let i = 0; i < teams.length; i++) {
-          let optionsForTeams = document.createElement("option");
-          optionsForTeams.value = teams[i].code;
-          optionsForTeams.innerText = teams[i].name;
+        for (let i = 0; i < teams.length; i++) { //looping through the teams array
+          let optionsForTeams = document.createElement("option"); //Made a variable optionsForTeams to have JaavaScript create an element this being an option
+          optionsForTeams.value = teams[i].code; //option element has a value field like this <option value=""> </option>. The code like abbreviation or number fills the field. <option value="DAL"> </option>
+          optionsForTeams.innerText = teams[i].name; //option element has a opening and closing tag unlike input, so we use an .innerText, not .value <option value="">Dallas Cowboys</option>
           footballSelector.appendChild(optionsForTeams); //footballSelector is the parent, optionsForTeams is the child
         }
       }
 
-      teamFunction();
+      teamFunction(); //In order for all this to come together and have our data to show, we need to call the function
 
+      //This function is to match the id(basically the code propertyItem from the teams array)
       function getTeamDetail() {
-        let idValue = footballSelector.value
+        let idValue = footballSelector.value //
         let selectedTeamDisplay; //
-        for(let i = 0; i < teams.length; i++){
-            if(teams[i].code === idValue){
-                selectedTeamDisplay = teams[i];
+        for(let i = 0; i < teams.length; i++){ //Looping
+            if(teams[i].code === idValue){ //
+                selectedTeamDisplay = teams[i]; //
+
+                displayFootballInfo.innerText = `${selectedTeamDisplay.name} plays in ${selectedTeamDisplay.plays} ` //Uses string interpilation to get the data like .name and .plays to show on the webpage when clicked  
+        
+                let teamImage = document.createElement("img");
+                 teamImage.src = selectedTeamDisplay.img
+                 teamImage.style.width = "150px"
+                  displayFootballInfo.appendChild(teamImage)
+
+                  break;
             }
         }
-displayFootballInfo.innerText = `${selectedTeamDisplay.name} plays in ${selectedTeamDisplay.plays}`
+
       }
     </script>
   </body>

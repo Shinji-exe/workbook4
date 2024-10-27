@@ -34,10 +34,7 @@ let arrayOfObjects = [
 let amonutOfFlavorsCount = 0;
 
 for(let i = 0; i < arrayOfObjects.length; i++){
-  
-    for(let x = 0; x < arrayOfObjects[i].flavors.length; i++){
       amonutOfFlavorsCount = amonutOfFlavorsCount + arrayOfObjects[i].flavors.length
-    }
 }
 
 console.log(amonutOfFlavorsCount)
