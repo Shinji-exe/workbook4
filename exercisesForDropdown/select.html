@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+
+    <select name="" id="selector1" onchange="selectSecond()">
+      <option value="">Select...</option>
+    </select>
+
+    <select name="" id="selector2">
+      <option value="">Select...</option>
+    </select>
+
+    <button onclick="showBook()">Show Book</button>
+
+    <div id="showProduct">
+
+    </div>
+
+    <script>
+      const selector1 = document.getElementById("selector1");
+      const selector2 = document.getElementById("selector2");
+      const showProduct = document.getElementById("showProduct")
+
+      let spyAuthor = ["Robert Ludlum", "Ian Fleming"];
+
+      let bookObjects = [
+        { value: "001", author: "Ian Fleming", book: "SkyFall" },
+        { value: "002", author: "Robert Ludlum", book: "The Bourne Deception" },
+        { value: "003", author: "Ian Fleming", book: "Goldeneye" },
+        { value: "004", author: "Robert Ludlum", book: "The Bourne Supremecy" },
+        { value: "005", author: "Ian Fleming", book: "Dr.No" },
+        { value: "006", author: "Robert Ludlum", book: "The Bourne Ultimatum" },
+        { value: "007", author: "Ian Fleming", book: "GoldFinger" },
+        { value: "008", author: "Robert Ludlum", book: "The Bourne Identity" },
+      ];
+
+      function selectFirstOptions() {
+        for (let i = 0; i < spyAuthor.length; i++) {
+          let createOptions = document.createElement("option");
+          createOptions.innerText = spyAuthor[i];
+          createOptions.value = spyAuthor[i];
+          selector1.appendChild(createOptions);
+        }
+      }
+
+      selectFirstOptions();
+
+      function selectSecond() {
+        let theFirstSelectorValue = selector1.value;
+        for (let i = 0; i < bookObjects.length; i++) {
+          if (bookObjects[i].author === theFirstSelectorValue) {
+            let createOptions = document.createElement("option");
+            createOptions.innerText = bookObjects[i].book;
+            createOptions.value = bookObjects[i].author;
+            selector2.appendChild(createOptions);
+          }
+        }
+      }
+
+      function showBook() {
+      let theSecondSelectorValue = selector2.value;
+      let selectedBook;
+
+      for(let i = 0; i < bookObjects.length; i++){
+       if(bookObjects[i].author === theSecondSelectorValue){
+        selectedBook = bookObjects[i];
+        break
+       }
+      }
+      
+showProduct.innerText = `${selectedBook.book}`
+      }
+
+// function showBook() {
+//         let selectedBookTitle = selector2.value;
+
+//         if (selectedBookTitle) {
+//           showProduct.innerText = `Selected Book: ${selectedBookTitle}`;
+//         } else {
+//           showProduct.innerText = "Please select a book.";
+//         }
+//       }
+
+    </script>
+  </body>
+</html>
